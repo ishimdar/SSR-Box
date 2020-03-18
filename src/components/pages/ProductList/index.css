@@ -1,0 +1,26 @@
+*{
+    color: red;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.repaetBox{}
+.repeatUl{
+    display: flex;
+    flex-wrap: wrap;
+}
+.repeatUl li{
+    list-style: none;
+    width: 50%;
+}
+.repeatUl li a{
+    display: block;
+}
+.repeatUl li a figure{
+
+}
+.repeatUl li a figure img{
+    width: 100%;
+    max-width: 100%;
+}
