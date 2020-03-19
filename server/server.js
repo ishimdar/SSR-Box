@@ -41,7 +41,7 @@ const serverRenderer = (req, res, next) => {
     }
     
     frontloadServerRender(() => {
-      renderToString(    
+      return renderToString(    
         <Loadable.Capture report={m => module.push(m)}>
           <Provider store={store}>
             <StaticRouter location={req.url} context={context}>

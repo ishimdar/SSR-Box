@@ -55,20 +55,6 @@ const frontload = (props) => {
     }).catch(() => {
         
     })
-
-    // const pathname = props.location.pathname.replace('/','');
-  
-    // console.log('Product data before hitting api -', pathname, props);
-  
-    // if (!isEmpty(pathname)) {
-      
-    //   return fetchCounterList(pathname).then(async (result) => {
-    //     // Handle anything
-        
-    //   }).catch((err) => {
-    //     console.info(`Product landing page api is not working. Having Trouble For-- pathName: ${pathname}`, err);
-    //   });
-    // }
 }
 
 

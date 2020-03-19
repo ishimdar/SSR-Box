@@ -9,8 +9,7 @@ const initialState = {
 
 const CounterReducer = (state = initialState, action ) => {    
     switch(action.type) {
-        case STORE_PRODUCT_COUNTER:
-            console.log('Vishal', action);
+        case STORE_PRODUCT_COUNTER:            
             return{
                 ...state,                
                 counter: action.counter
