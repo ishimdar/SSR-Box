@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withCookies } from "react-cookie";
 import { connect } from 'react-redux';
 
 import { frontloadConnect } from 'react-frontload';
@@ -15,19 +16,17 @@ import './index.css';
 
 class ProductList extends Component {
   
-  static fetchData(store) {
+  componentDidMount(){
+    const { productList, fetchProductList } = this.props;
     
-    return store.dispatch(fetchProductList());
-  }
-
-  componentDidMount() {    
-    this.props.fetchProductList();
-  }
+    if (productList.header === '') {
+      fetchProductList();
+    }        
+}
   
   
   render() {
     let {node, header, footer} = this.props.productList;
-    // console.log('node', node);
     
     return (
       <>
@@ -53,19 +52,23 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-// const frontload = async (props) => {
 
-//   let { fetchProductList} = props;
+const frontload = (props) => {
+  let { fetchProductList} = props;
 
-//   return await fetchProductList().then(async (result) => {
-//     const { product } = result;
-//     console.log('product', product);
+  return fetchProductList();
 
-//   }).catch((err) => {    
-//     console.info(`Product info api is not working. Having Trouble For-- pathName:`, err);
-//   });
-// }
+  // return await fetchProductList().then((result) => {
+  //   const { product } = result;
+  //   console.log('product', product);
+
+  // }).catch((err) => {    
+  //   console.info(`Product info api is not working. Having Trouble For-- pathName:`, err);
+  // });
+}
 
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductList));
+export default connect(mapStateToProps, mapDispatchToProps)(frontloadConnect(frontload,{
+  onMount: true,
+  onUpdate: false
+})(withCookies(withRouter(ProductList))));

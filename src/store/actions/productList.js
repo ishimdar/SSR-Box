@@ -13,14 +13,18 @@ export const setProductList = (productList) => dispatch => {
 }
 
 
-export const fetchProductList = (name) => dispatch => {
-
-    axios.get(`https://m.floweraura.com/api/v1/product-list/Zmxvd2Vycy9vY2Nhc2lvbi9iaXJ0aGRheQ==`)
-        .then((res) => {
-            // console.log('res', res);
-            return dispatch(setProductList(res.data));
+export const fetchProductList = () => dispatch => {
+    
+    return new Promise((resolve, reject) => {
+        axios.get(`https://m.floweraura.com/api/v1/product-list/Zmxvd2Vycy9vY2Nhc2lvbi9iaXJ0aGRheQ==`)
+        .then((res) => {            
+            dispatch(setProductList(res.data));
+            resolve();
         })
         .catch((e) => {
-            console.log(e);
+            // console.log(e);
+            reject()
         });    
+        
+      });
 }

@@ -57,7 +57,7 @@ const serverRenderer = (req, res, next) => {
 
       const finalState = store.getState(); 
 
-      console.log('htmlMarkup', htmlMarkup);
+      // console.log('htmlMarkup', htmlMarkup);
 
       return res.send(
         data.replace(

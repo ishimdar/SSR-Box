@@ -64,4 +64,3 @@ export default connect(mapStateToProps, mapDispatchToProps)(frontloadConnect(fro
     onUpdate: false
 })(withCookies(withRouter(CounterPage))));
 
-// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CounterPage));
