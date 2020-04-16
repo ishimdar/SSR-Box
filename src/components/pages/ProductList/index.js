@@ -53,18 +53,18 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-const frontload = (props) => {
+const frontload = async (props) => {
   let { fetchProductList} = props;
 
-  return fetchProductList();
+  // return fetchProductList();
 
-  // return await fetchProductList().then((result) => {
-  //   const { product } = result;
-  //   console.log('product', product);
+  return await fetchProductList().then((result) => {
+    const { product } = result;
+    console.log('product', product);
 
-  // }).catch((err) => {    
-  //   console.info(`Product info api is not working. Having Trouble For-- pathName:`, err);
-  // });
+  }).catch((err) => {    
+    console.info(`Product info api is not working. Having Trouble For-- pathName:`, err);
+  });
 }
 
 
